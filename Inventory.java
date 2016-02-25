@@ -55,6 +55,8 @@ public class Inventory
 	 */
 	public void dispose(Item pItem, int pQuantity)
 	{
+		assert pItem != null;
+		assert pQuantity >= 0;
 		int amount = aInventory.get(pItem);
 		amount -= pQuantity;
 		aInventory.put(pItem, amount);
