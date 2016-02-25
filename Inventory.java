@@ -55,8 +55,7 @@ public class Inventory
 	 */
 	public void dispose(Item pItem, int pQuantity)
 	{
-		assert pItem != null;
-		assert pQuantity >= 0;
+		assert aInventory.containsKey(pItem) && pQuantity > aInventory.get(pItem);
 		int amount = aInventory.get(pItem);
 		amount -= pQuantity;
 		aInventory.put(pItem, amount);
@@ -75,6 +74,15 @@ public class Inventory
 		else
 		{
 			return 0;
+		}
+	}
+
+	public int totalValue()
+	{
+		int total = 0;
+		for (Entry<Item, Integer> item : aInventory.entrySet())
+		{
+			total +=  item.getPrice() * item.getValue();
 		}
 	}
 }
